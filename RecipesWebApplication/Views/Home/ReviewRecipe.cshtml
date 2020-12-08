@@ -1,0 +1,55 @@
+﻿@model RecipeReview
+@{
+    Layout = "_GeneralLayout";
+    ViewBag.Title = "Review Recipe Page";
+    ViewBag.Heading = "Recipe Review Form";
+    ViewBag.ImgSrc = "/image/dish4.jpg";
+
+}
+
+
+    <form class="p-a-1" asp-action="ReviewRecipe" method="Post">
+        <!--validating the form so you can see the error messages-->
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label asp-for="YourName">Enter your name: </label>
+            <input class="form-control" asp-for="YourName" />
+        </div>
+        <div class="form-group">
+            @*<label asp-for="RecipeID">Recipe Name</label>*@
+            <div >
+                <input asp-for="RecID" value="@ViewBag.rSelID" type="hidden"  />
+                @*<input asp-for="ReviewID" value="@ViewBag.revId" type="hidden"/>*@
+            </div>
+            <input class="form-control" value="@ViewBag.rSel" readonly="readonly" />
+
+
+        </div>
+        @*<div class="form-group">
+            <label asp-for="SelectedRecipe">Recipe Name </label>
+            <text class="form-control" asp-for="SelectedRecipe"></text>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="Comment">Comments: </label>
+            <input class="form-control" asp-for="Comment" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Ratings">How would you rate this recipe?</label>
+            <select class="form-control" asp-for="Ratings">
+                <option value="">Choose an rating from 1-5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Submit Recipe Review</button> |
+            <button class="btn btn-primary" type="reset">Reset Form</button> |
+            <a class="btn btn-primary" style="text-decoration:none ; color:white;" asp-action="Index" asp-controller="Home">Cancel</a>
+
+        </div>
+    </form>
+

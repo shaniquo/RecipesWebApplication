@@ -1,0 +1,98 @@
+﻿body {
+    background-color: azure;
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#menuList a {
+    position: center;
+    text-decoration: none;
+    font-family: "Century Schoolbook";
+    color: #2F0000;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 900;
+    font-size: medium;
+    padding: 2px;
+}
+
+
+
+#menuList a:hover {
+    text-decoration: none;
+    background-color: #2F0000;
+    font-style: normal;
+    color: #FFFFFF;
+    padding: 2px;
+    font-family: "Century Schoolbook";
+    font-size: medium;
+    font-variant: small-caps;
+    font-weight: 900;
+}
+nav {
+    background-color: azure
+}
+#menuList li {
+    text-decoration: none;
+    font-style: normal;
+    color: #2F0000;
+    padding: 10px;
+    font-family: "Century Schoolbook";
+    font-size: medium;
+    font-variant: small-caps;
+    font-weight: 900;
+}
+
+h1 {
+    padding: 10px;
+    background-color: #2F0000;
+    color: #FFFFFF;
+    font-family: "Gill Sans Ultra Bold";
+    font-size:xx-large; 
+    height: 120px;
+    font-weight:bold;
+    font-variant: small-caps;
+    
+}
+
+
+
+button {
+    color: #2F0000;
+    background-color: #2F0000;
+}
+
+hr {
+    border-style: solid;
+    border-width: 7px;
+    border-color: #2F0000;
+    color: #2F0000;
+}
+
+.recipeImg {
+    width: 980px;
+}
+
+.logo{
+    height:100px;
+    float:left;
+}
+
+footer {
+    margin:auto;
+    width:980px;
+}
+
+
+@media (min-width: 768px) {
+    .carousel-multi-item-2 .col-md-3 {
+        float: left;
+        width: 25%;
+        max-width: 100%;
+    }
+}
+
+.carousel-multi-item-2 .card img {
+    border-radius: 2px;
+}

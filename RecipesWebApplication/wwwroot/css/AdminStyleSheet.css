@@ -1,0 +1,74 @@
+﻿.input-validation-error {
+    border-color: red;
+    background-color: #fee;
+}
+body {
+    background-color: blanchedalmond;
+    color: lightslategray;
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    margin: auto;
+    width: 980px;
+}
+
+h1 {
+    padding: 10px;
+    background-color: lightslategray;
+    color: darksalmon;
+    font-family: "Gill Sans Ultra Bold";
+    font-size: xx-large;
+    height: 120px;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+table {
+    border-color: lightslategray;
+}
+
+
+#adminMenuList a {
+    position: center;
+    text-decoration: none;
+    font-family: Verdana;
+    color: lightslategray;
+    font-style: normal;
+    font-variant: small-caps;
+    font-weight: 900;
+    font-size: medium;
+    padding: 2px;
+}
+#adminMenuList li {
+    padding: 10px;
+}
+
+
+#adminMenuList a:hover {
+    text-decoration: none;
+    background-color: lightslategray;
+    font-style: normal;
+    color: blanchedalmond;
+    padding: 2px;
+    font-family: Verdana;
+    font-size: medium;
+    font-variant: small-caps;
+    font-weight: 900;
+}
+#adminBody {
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+hr {
+    border-style: solid;
+    border-width: 7px;
+    border-color: lightslategray;
+    color: lightslategray;
+}

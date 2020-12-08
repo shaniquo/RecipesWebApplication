@@ -1,0 +1,38 @@
+﻿@model LoginModel
+@{
+    ViewBag.Title = "Log In";
+    Layout = "_AccountLayout";
+    ViewBag.Heading = "Login to continue";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Login" asp-controller="Account" method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <div><span asp-validation-for="Name" class="text-danger"></span></div>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <div><span asp-validation-for="Password" class="text-danger"></span></div>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    @*<button class="btn btn-primary" type="submit">Log In</button>*@
+    <div class="text-center">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <button type="submit" class="btn btn-primary">
+            Log In
+        </button>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    </div>
+    <div class="text-center" style="padding:10px;">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary">
+            Main Page
+        </a>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    </divclass="text-center">
+
+</form>

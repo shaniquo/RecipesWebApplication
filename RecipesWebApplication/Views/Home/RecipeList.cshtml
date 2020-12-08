@@ -1,0 +1,67 @@
+﻿@model RecipeListViewModel
+@{
+    Layout = "_GeneralLayout";
+    ViewBag.Title = "Recipe List Page";
+    ViewBag.Heading = "Here is the list of recipes";
+    ViewBag.ImgSrc = "/image/dish1.jpg";
+
+}
+
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Preparation Time</th>
+            <th>Cook Time</th>
+            <th>Serving Size</th>
+            <th>Calories</th>
+            <th>View Recipe</th>
+            <th>Review Recipe</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!--shows each positive answer in the table below-->
+        @foreach (Recipe r in Model.RecipesPerPage)
+        {
+        <tr>
+            <td>@r.Name</td>
+            <td>@r.PrepTime</td>
+            <td>@r.CookTime</td>
+            <td>@r.Servings</td>
+            <td>@r.Calories</td>
+            @*   <!--shows differnt ways of creating hyperlinks which passes info to the action method-->
+                 _________________________________________________________________________________________
+                 1.  @Html.ActionLink($"View {r.Name} Recipe", "ViewRecipe", new { r.Name }) -->generate hyperlink on the first parameter ahich is the linkText, p2 = action, p3=data being passes
+                 2.  <a href="@Url.Action($"ViewRecipe", "Home", new { r.Name })">Your info</a> --> generates hyperlink similar to above, but can use a tag to surround other tag such as img, paragraph etc...
+                 3.  <a asp-action="ViewRecipe" asp-controller="Home" asp-route-Name="@r.Name">Your info</a> --->using taghelper to specify the route of the hyperlink, asp-route-(specific data field/name)="your data"
+            *@
+            <td>
+                <a asp-action="ViewRecipe" asp-controller="Home" asp-route-id="@r.RecipeID">
+                <img src="~/image/ViewRecipeLogo.png" height="45px" width="45px" float="left" />
+                </a>
+
+            </td>
+            <td>
+                <a asp-action="ReviewRecipe" asp-controller="Home" asp-route-id="@r.RecipeID">
+                <img src="~/image/ReviewRecipeLogo.jpg" height="45px" width="45px" float="left" />
+                </a>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+<div 
+     page-model="@Model.PagingInfo"
+     page-action="RecipeList"
+     page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-secondary"
+     page-class-selected="btn-primary">
+
+</div>
+
+
+

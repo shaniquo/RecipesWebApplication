@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Cuisine>
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "Cuisine List Page";
+    ViewBag.Heading = "Here is the list of cuisines";
+    ViewBag.ImgSrc = "/image/dish1.jpg";
+}
+
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th class="text-right">Name</th>
+            <th class="text-right">Country of Origin</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!--shows each positive answer in the table below-->
+        @foreach (Cuisine c in Model)
+        {
+        <tr>
+            <td class="text-right">@c.CuisineName</td>
+            <td class="text-right">@c.CuisineOrigin</td>
+            <td class="text-center">
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" name="cuisineID" value="@c.CuisineID" />
+                    <a asp-action="Edit" class="btn btn-sm btn-warning" asp-action="Edit" asp-route-cuisineID="@c.CuisineID">
+                        Edit Cuisine
+                    </a>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete Cuisine
+                    </button>
+
+                </form>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<div class="text-center">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <a asp-action="Create" class="btn btn-primary">
+        Add New Cuisine
+    </a>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</div>
+<div class="text-center" style="padding:10px;">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">
+        Main Page
+    </a>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    </divclass="text-center">
+

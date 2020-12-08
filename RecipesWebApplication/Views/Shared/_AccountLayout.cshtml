@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet"
+          asp-href-include="/lib/bootstrap/**/*.min.css"
+          asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link href="/css/AdminStyleSheet.css" type="text/css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div width="980px" id="adminBody" class="container">
+        <h1>
+            <img src="~/image/logo.jpg" height="100px" /> Crème De La Crème Recipes
+        </h1>
+        <div class="col" id="adminMenuList">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menuList">
+                    <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-action="RecipeList" asp-controller="Home">Recipe List</a></li>
+
+                    <li class="nav-item"><a class="nav-link" asp-action="Gallery" asp-controller="Home">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-action="Menu" asp-controller="Home">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-action="Contact" asp-controller="Home">Contact Us</a></li>
+
+                    <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="Admin">Admin Login</a></li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
+            </nav>
+        </div>
+        <hr />
+        @*<div>
+
+            <div class="col">
+                <h1 class="text-center text-capitalize">@ViewBag.Heading</h1>
+                <hr />
+            </div>
+        </div>*@
+        <h2> @ViewBag.Heading</h2>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success mt-1">@TempData["message"]</div>
+        }
+        @RenderBody()
+        <footer class="text-center">
+            <h6>&copy;&nbsp;&nbsp; Copright Eunseok Choi, Hassan Shabbir, Jarod Lavine, Manal Hagos, Shaniquo McKenzie  . COMP229 . Fall 2019 . Recipe System Cusine Update: @ViewBag.Title </h6>
+        </footer>
+    </div>     
+</body>
+</html>
+

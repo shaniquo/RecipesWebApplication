@@ -1,0 +1,42 @@
+﻿@model Recipe
+<!--validating the form so you can see the error messages-->
+<div asp-validation-summary="All"></div>
+<div class="form-group">
+    <label asp-for="RecipeID">Recipe ID:</label>
+
+    <input class="form-control" asp-for="RecipeID" value="@ViewBag.rID" readonly="readonly" />
+</div>
+<div class="form-group">
+    <label asp-for="Name">Recipe Name:</label>
+    <input class="form-control" asp-for="Name" />
+</div>
+<div class="form-group">
+    <label asp-for="Ingredients">Ingredients:</label>
+    <input class="form-control" asp-for="Ingredients" />
+</div>
+<div class="form-group">
+    <label asp-for="Instructions">Cooking Instructions:</label>
+    <input class="form-control" asp-for="Instructions" />
+</div>
+<div class="form-group">
+    <label asp-for="PrepTime">PreparationTime:</label>
+    <input class="form-control" asp-for="PrepTime" />
+</div>
+<div class="form-group">
+    <label asp-for="CookTime">Cooking Time:</label>
+    <input class="form-control" asp-for="CookTime" />
+</div>
+<div class="form-group">
+    <label asp-for="Servings">Serving Size:</label>
+    <input class="form-control" asp-for="Servings" />
+</div>
+<div class="form-group">
+    <label asp-for="Calories">Calories:</label>
+    <input class="form-control" asp-for="Calories" />
+</div>
+<div class="text-center">
+    <button class="btn btn-primary" type="submit">Submit Recipe</button> |
+    <button class="btn btn-primary" type="reset">Reset Form</button> |
+    <a class="btn btn-primary" style="text-decoration:none ; color:white;" asp-action="Index" asp-controller="Home">Cancel</a>
+
+</div>

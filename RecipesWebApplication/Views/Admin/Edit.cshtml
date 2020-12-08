@@ -1,0 +1,77 @@
+﻿@model Recipe
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "Admin Edit/Add Recipe Page";
+    ViewBag.Heading = "Edit/Add A Recipe";
+    ViewBag.ImgSrc = "/image/dish1.jpg";
+
+    //cuisine list passed to the view
+    List<Cuisine> allCuisines = new List<Cuisine>();
+    allCuisines= ViewBag.Cuisines as List<Cuisine>;
+}
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="RecipeID" />
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <div><span asp-validation-for="Name" class="text-danger"></span></div>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        @if (allCuisines != null)
+        {
+
+             <div class="form-group">
+                 <label asp-for="Cusine"></label>
+                 <div><span asp-validation-for="Cusine" class="text-danger"></span></div>
+                 <select asp-for="Cusine" class="form-control" >
+                     @foreach (Cuisine item in allCuisines)
+                     {
+                         //value is int but the user sees the string name 
+                         <option value="@item.CuisineID">@item.CuisineName</option>
+                     }
+                 </select>
+             </div>
+         }
+        <div class="form-group">
+            <label asp-for="Ingredients"></label>
+            <div><span asp-validation-for="Ingredients" class="text-danger"></span></div>
+            <textarea asp-for="Ingredients" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Instructions"></label>
+            <div><span asp-validation-for="Instructions" class="text-danger"></span></div>
+            <input asp-for="Instructions" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PrepTime"></label>
+            <div><span asp-validation-for="PrepTime" class="text-danger"></span></div>
+            <input asp-for="PrepTime" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CookTime"></label>
+            <div><span asp-validation-for="CookTime" class="text-danger"></span></div>
+            <input asp-for="CookTime" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Servings"></label>
+            <div><span asp-validation-for="Servings" class="text-danger"></span></div>
+            <input asp-for="Servings" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Calories"></label>
+            <div><span asp-validation-for="Calories" class="text-danger"></span></div>
+            <input asp-for="Calories" class="form-control" />
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>

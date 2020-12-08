@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Recipe>
+
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = "Admin Recipe List Page";
+    ViewBag.Heading = "Here is the list of recipes";
+    ViewBag.ImgSrc = "/image/dish1.jpg";
+
+        //cuisine list passed to the view
+    List<Cuisine> allCuisines = new List<Cuisine>();
+    allCuisines= ViewBag.Cuisines as List<Cuisine>;
+}
+
+<table  class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th class="text-right">Name</th>
+            <th class="text-right">Cuisine</th>
+            <th class="text-right">Preparation Time</th>
+            <th class="text-right">Cook Time</th>
+            <th class="text-right">Serving Size</th>
+            <th class="text-right">Calories</th >
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!--shows each positive answer in the table below-->
+        @foreach (Recipe r in Model)
+        {
+        <tr>
+        <td class="text-right">@r.Name</td>
+        <td class="text-right">
+            @if (r.Cusine != 0)
+            {
+                @allCuisines.Where(c => c.CuisineID == r?.Cusine).FirstOrDefault().CuisineName
+            }
+            else
+            {
+                <text>Not Specified</text>
+            }
+        </td>
+        <td class="text-right">@r.PrepTime</td>
+        <td class="text-right">@r.CookTime</td>
+        <td class="text-right">@r.Servings</td>
+        <td class="text-right">@r.Calories</td>
+        <td class="text-center">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" name="RecipeID" value="@r.RecipeID" />
+                <a asp-action="Edit" class="btn btn-sm btn-warning" asp-action="Edit" asp-route-RecipeID="@r.RecipeID">
+                    Edit Recipe
+                </a>
+                <button type="submit" class="btn btn-sm btn-danger">
+                    Delete Recipe
+                </button>
+
+            </form>
+        </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<div class="text-center">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <a asp-action="Create" class="btn btn-primary">
+        Add New Recipe
+    </a>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</div>
+<div class="text-center" style="padding:10px;">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">
+        Main Page
+    </a>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</divclass="text-center">
+

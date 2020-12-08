@@ -1,0 +1,14 @@
+﻿@model Recipe
+@{
+    Layout = "_GeneralLayout";
+    ViewBag.Title = "Add Recipe Page";
+    ViewBag.Heading = "Add a new recipe to our collection";
+    ViewBag.ImgSrc = "/image/dish2.jpg" ;
+}
+
+    <form class="p-a-1" asp-action="AddRecipe" method="Post">
+        @{ 
+            @await Html.PartialAsync("AddRecipeFormInputs");
+        }
+    </form>
+

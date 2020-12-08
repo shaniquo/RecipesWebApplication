@@ -1,0 +1,94 @@
+﻿@model Recipe
+@{
+    Layout = "_GeneralLayout";
+    ViewBag.Title = "View Recipe Page";
+    ViewBag.Heading = "Here is the recipe details!";
+    ViewBag.ImgSrc = "/image/dish3.jpg";
+
+    List<RecipeReview> recipeReview = new List<RecipeReview>();
+    recipeReview = ViewBag.Reviews as List<RecipeReview>;
+
+    //cuisine list passed to the view
+    List<Cuisine> allCuisines = new List<Cuisine>();
+    allCuisines= ViewBag.Cuisines as List<Cuisine>;
+
+
+}
+
+<!--shows recipe info in the table below-->
+    <table class="table table-sm table-striped table-bordered">
+
+        <tr>
+            <th>Name</th>
+            <td>@Model?.Name</td>
+        </tr>
+        <tr>
+            <th>Cuisine</th>
+            @*selects cuisine name where the model's cuisine id matches that in the repository*@ 
+
+        <td>
+            @if (Model.Cusine != 0)
+            {
+                @allCuisines.Where(c => c.CuisineID == Model?.Cusine).FirstOrDefault().CuisineName
+            }
+            else
+            {
+                <text>Not Specified</text>
+            }
+
+        </td>
+        </tr>
+        <tr>
+            <th>Ingredients</th>
+            <td>@Model.Ingredients</td>
+        </tr>
+        <tr>
+            <th>Instructions</th>
+            <td>@Model.Instructions</td>
+        </tr>
+        <tr>
+            <th>Preparation Time</th>
+            <td>@Model.PrepTime</td>
+        </tr>
+        <tr>
+
+            <th>Cook Time</th>
+            <td>@Model.CookTime</td>
+        </tr>
+        <tr>
+            <th>Serving Size</th>
+            <td>@Model.Servings</td>
+        </tr>
+        <tr>
+            <th>Calories</th>
+            <td>@Model.Calories</td>
+        </tr>
+
+    </table>
+@{
+    if (recipeReview != null )
+    { 
+        <h3 class="h3 "> Reviews </h3>
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th>Reviewer's Name</th>
+                    <th>Comment</th>
+                    <th>Ratings</th>
+                </tr>
+            </thead>
+            
+            @foreach (RecipeReview item in recipeReview) 
+            {
+                RecipeReview rev = item;
+                <tr>
+                    <td>@rev.YourName</td>
+                    <td>@rev.Comment</td>
+                    <td>@rev.Ratings</td>
+                </tr>
+            }
+        </table>
+    }
+}
+
+

@@ -1,0 +1,34 @@
+﻿@model RecipeListViewModel
+@{
+    Layout = "_GeneralLayout";
+    ViewBag.Title = "Recipe Menu Page";
+    ViewBag.Heading = "Here is the menu for our recipes";
+    //ViewBag.ImgSrc = "/image/dish1.jpg";
+
+
+}
+    <div class="row">
+        @{ foreach (Recipe r in Model.RecipesPerPage)
+            {
+                <div class="column">
+                    <div class="card" style="width: 18rem; ">
+                        <img src="~/image/dish2.jpg" class="card-img-top" alt="@r.Name" style="height: 12rem; ">
+                        <div class="card-body">
+                            <h5 class="card-title" class="modal-title">@r.Name</h5>
+                            <p class="card-text">Calories: @r.Calories<br />Prep Time: @r.PrepTime<br />Cook Time: @r.CookTime<br /></p>
+                            <a asp-action="ViewRecipe" asp-controller="Home" asp-route-id="@r.RecipeID" class="btn btn-primary">Full Recipe</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+<div page-model="@Model.PagingInfo"
+     page-action="Menu"
+     page-classes-enabled="true"
+     page-class="btn"
+     page-class-normal="btn-secondary"
+     page-class-selected="btn-primary">
+
+</div>

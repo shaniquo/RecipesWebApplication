@@ -10,11 +10,11 @@
     <div class="row">
         @{ foreach (Recipe r in Model.RecipesPerPage)
             {
-                <div class="column">
-                    <div class="card" style="width: 18rem; ">
-                        <img src="~/image/dish2.jpg" class="card-img-top" alt="@r.Name" style="height: 12rem; ">
+                <div class="column col-lg-4">
+                    <div class="card" style="width: auto;">
+                        <img src="~/image/dish2.jpg" class="card-img-top" alt="@r.Name" @*style="height: 12rem; "*@>
                         <div class="card-body">
-                            <h5 class="card-title" class="modal-title">@r.Name</h5>
+                            <h4 class="card-title" @*class="modal-title"*@>@r.Name</h4>
                             <p class="card-text">Calories: @r.Calories<br />Prep Time: @r.PrepTime<br />Cook Time: @r.CookTime<br /></p>
                             <a asp-action="ViewRecipe" asp-controller="Home" asp-route-id="@r.RecipeID" class="btn btn-primary">Full Recipe</a>
                         </div>

@@ -1,3 +1,3 @@
 Recipes Web Application
-Cuisineadmin
+CuisineAdmin
 Cuisine#1
